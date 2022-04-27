@@ -5,21 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <style>
+            body {
+                font-family: roboto, serif
+            }
+        </style>
 </head>
 <body>
     <div>
-        <h1>Rock Paper Scissors</h1>
-        <div>
-            <button id="rock">Rock</button>
-            <button id="paper">Paper</button>
-            <button id="scissors">Scissors</button>
+        <div class="header">
+            <h1>Rock Paper Scissors</h1>
         </div>
-        <div id="result">
+        <div class="hero">
+            <div class="hero-left">
+                <p class="hero-text">Rock, Paper, Scissors! Play the game, beat the machine!</p>
+            </div>
+            <div class="hero-right">
+                <img src="img/rockpaperscissors.png" alt="" width="50" height="50"> 
+            </div>
+        </div>
+        <div class="content">
+            <p class="content-text">Choose your weapon!</p>
+            <div class="cards">
+                <div class="card">
+                    <div id="rock" class="card-illustration">
+                        <img src="img/rock.png" alt="" width="70" height="70"> 
+                    </div>
+                    <div class="card-text">Rock</div>
+                </div>
+                <div class="card">
+                    <div id="paper" class="card-illustration">
+                        <img src="img/paper.png" alt="" width="70" height="70">
+                    </div>
+                    <div class="card-text">Paper</div>
+                </div>
+                <div class="card">
+                    <div id="scissors" class="card-illustration">
+                        <img src="img/scissors.png" alt="" width="70" height="70">
+                    </div>
+                    <div class="card-text">Scissors</div>
+                </div>         
+            </div>
+            <div class="content-text"id="result">
 
-        </div>
-        <div id="score">
-            Player 0 - 0 Computer
-        </div>
+            </div>
+            <br>
+            <div class="content-text" id="score">
+                Player 0 - 0 Computer
+            </div>
+        </div> 
     </div>
 <script src="app.js"></script>
 </body>

@@ -15,24 +15,28 @@ const scoreDIV = document.getElementById("score");
 const rockButton = document.getElementById("rock");
 const paperButton = document.getElementById("paper");
 const scissorsButton = document.getElementById("scissors");
+const cards = document.querySelectorAll(".card-illustration")
 
 // Set Event Listeners 
 
 rockButton.addEventListener("click", function setRock(){
    playerSelection = "rock";
    computerSelection = computerPlay();
+   rockButton.classList.add('selected');
    playRound(playerSelection, computerSelection);
 });
 
 paperButton.addEventListener("click", function setPaper(){
     playerSelection = "paper";
     computerSelection = computerPlay();
+    paperButton.classList.add('selected');
     playRound(playerSelection, computerSelection);
 });
 
 scissorsButton.addEventListener("click", function setScissors(){
     playerSelection = "scissors";
     computerSelection = computerPlay();
+    scissorsButton.classList.add('selected');
     playRound(playerSelection, computerSelection);
 });
 
@@ -89,8 +93,13 @@ function playRound(playerSelection, computerSelection) {
             resultDIV.innerHTML = "You Won that round!";
             playerScore = 0;
             computerScore = 0;
-    }}
+    }} cards.forEach(card => card.addEventListener('transitionend', removeTransition));
 }
+
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('selected');
+  }
 
 
 

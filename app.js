@@ -1,25 +1,35 @@
 let choices = 
 ["rock", "paper", "scissors"];
 
+// Set Globals
+
 let computerSelection = computerPlay();
 let playerSelection = "";
+let playerScore = 0;
+let computerScore = 0;
 
+// Get Page Elements
+
+const resultDIV = document.getElementById("result");
+const scoreDIV = document.getElementById("score");
 const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+
+// Set Event Listeners 
+
 rockButton.addEventListener("click", function setRock(){
    playerSelection = "rock";
    computerSelection = computerPlay();
    playRound(playerSelection, computerSelection);
 });
 
-
-const paperButton = document.getElementById("paper");
 paperButton.addEventListener("click", function setPaper(){
     playerSelection = "paper";
     computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
 });
 
-const scissorsButton = document.getElementById("scissors");
 scissorsButton.addEventListener("click", function setScissors(){
     playerSelection = "scissors";
     computerSelection = computerPlay();
@@ -30,72 +40,57 @@ function computerPlay() {
     return choices[Math.floor(Math.random()*choices.length)];
 }
 
-
 function playRound(playerSelection, computerSelection) {
-    let result = 0;
     if(playerSelection === computerSelection){
-        console.log("Draw!")
+        resultDIV.innerHTML = "Draw!";
+        scoreDIV.innerHTML = "Player " + playerScore + " - " + computerScore + " Computer"
     } else {
         if(playerSelection === "rock" && computerSelection === "paper"){
-            console.log("You Lose! Paper beats Rock");
-            result = 1;
+            resultDIV.innerHTML = "You Lose! Paper beats Rock";
+            computerScore += 1;
+            scoreDIV.innerHTML = "Player " + playerScore + " - " + computerScore + " Computer"
         } else {
             if (playerSelection === "rock" && computerSelection === "scissors"){
-                console.log("You Win! Rock beats Scissors");
-                result = 2;
+                resultDIV.innerHTML = "You Win! Rock beats Scissors";
+                playerScore += 1;
+                scoreDIV.innerHTML = "Player " + playerScore + " - " + computerScore + " Computer"
             } else {
                 if(playerSelection === "paper" && computerSelection === "rock"){
-                    console.log("You Win! Paper beats Rocks");
-                    result = 2;
+                    resultDIV.innerHTML = "You Win! Paper beats Rocks";
+                    playerScore += 1;
+                    scoreDIV.innerHTML = "Player " + playerScore + " - " + computerScore + " Computer"
                 } else {
                     if(playerSelection === "paper" && computerSelection === "scissors"){
-                        console.log("You Lose! Scissors beats Paper");
-                        result = 1;
+                        resultDIV.innerHTML = "You Lose! Scissors beats Paper";
+                        computerScore += 1;
+                        scoreDIV.innerHTML = "Player " + playerScore + " - " + computerScore + " Computer"
                     } else {
                         if(playerSelection === "scissors" && computerSelection === "rock"){
-                            console.log("You Lose! Rock beats Scissors");
-                            result = 1;
+                            resultDIV.innerHTML = "You Lose! Scissors beats Paper";
+                            computerScore += 1;
+                            scoreDIV.innerHTML = "Player " + playerScore + " - " + computerScore + " Computer"
                         } else {
                             if(playerSelection === "scissors" && computerSelection === "paper"){
-                                console.log("You Win! Scissors beats paper");
-                                result = 2;
+                                resultDIV.innerHTML = "You Win! Scissors beats paper";
+                                playerScore += 1;
+                                scoreDIV.innerHTML = "Player " + playerScore + " - " + computerScore + " Computer"
                             }
                         }
                     }
                 }
             }
         }
-    } return result
+    } if(computerScore == 5){
+        resultDIV.innerHTML = "You Lost that round!";
+        playerScore = 0;
+        computerScore = 0;
+    } else {
+        if(playerScore == 5){
+            resultDIV.innerHTML = "You Won that round!";
+            playerScore = 0;
+            computerScore = 0;
+    }}
 }
-
-// playRound(playerSelection, computerSelection);
-
-// game = () => {
-//     playerScore = 0
-//     computerScore = 0
-//     for (let i = 0; i < 5; i++) {
-//         console.log("Player: " + playerScore + " : " + "Computer: " + computerScore)
-//         let result = playRound();
-//         if(result === 1){
-//             computerScore += 1;
-//         } else {
-//             if(result === 2){
-//                 playerScore += 1;
-//             }
-//         } 
-//     } console.log("Player: " + playerScore + " : " + "Computer: " + computerScore)
-//     if(playerScore === computerScore){
-//         console.log("Its a draw!");
-//     } else {
-//         if(playerScore > computerScore){
-//             console.log("Winner Winner")
-//         } else {
-//             console.log("Loser!")
-//         }
-//     }
-// }
-
-// game();
 
 
 

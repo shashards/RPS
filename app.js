@@ -1,21 +1,38 @@
 let choices = 
-["rock", "paper", "scissors"]
+["rock", "paper", "scissors"];
+
+let computerSelection = computerPlay();
+let playerSelection = "";
+
+const rockButton = document.getElementById("rock");
+rockButton.addEventListener("click", function setRock(){
+   playerSelection = "rock";
+   computerSelection = computerPlay();
+   playRound(playerSelection, computerSelection);
+});
+
+
+const paperButton = document.getElementById("paper");
+paperButton.addEventListener("click", function setPaper(){
+    playerSelection = "paper";
+    computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+});
+
+const scissorsButton = document.getElementById("scissors");
+scissorsButton.addEventListener("click", function setScissors(){
+    playerSelection = "scissors";
+    computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+});
 
 function computerPlay() {
     return choices[Math.floor(Math.random()*choices.length)];
 }
 
-function playerPlay() {
-    let response = prompt("Choose Rock, Paper or Scisors");
-    return response.toLowerCase();
-}
 
-
-
-function playRound() {
+function playRound(playerSelection, computerSelection) {
     let result = 0;
-    const computerSelection = computerPlay();
-    const playerSelection = playerPlay();
     if(playerSelection === computerSelection){
         console.log("Draw!")
     } else {
@@ -53,32 +70,32 @@ function playRound() {
 
 // playRound(playerSelection, computerSelection);
 
-game = () => {
-    playerScore = 0
-    computerScore = 0
-    for (let i = 0; i < 5; i++) {
-        console.log("Player: " + playerScore + " : " + "Computer: " + computerScore)
-        let result = playRound();
-        if(result === 1){
-            computerScore += 1;
-        } else {
-            if(result === 2){
-                playerScore += 1;
-            }
-        } 
-    } console.log("Player: " + playerScore + " : " + "Computer: " + computerScore)
-    if(playerScore === computerScore){
-        console.log("Its a draw!");
-    } else {
-        if(playerScore > computerScore){
-            console.log("Winner Winner")
-        } else {
-            console.log("Loser!")
-        }
-    }
-}
+// game = () => {
+//     playerScore = 0
+//     computerScore = 0
+//     for (let i = 0; i < 5; i++) {
+//         console.log("Player: " + playerScore + " : " + "Computer: " + computerScore)
+//         let result = playRound();
+//         if(result === 1){
+//             computerScore += 1;
+//         } else {
+//             if(result === 2){
+//                 playerScore += 1;
+//             }
+//         } 
+//     } console.log("Player: " + playerScore + " : " + "Computer: " + computerScore)
+//     if(playerScore === computerScore){
+//         console.log("Its a draw!");
+//     } else {
+//         if(playerScore > computerScore){
+//             console.log("Winner Winner")
+//         } else {
+//             console.log("Loser!")
+//         }
+//     }
+// }
 
-game();
+// game();
 
 
 
